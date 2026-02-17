@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Alexandra Gabriela Ferreira">
-<meta name="dcterms.date" content="2026-02-08">
+<meta name="dcterms.date" content="2026-02-16">
 
-<title>homework week 01 – Cytometry in R</title>
+<title>homework week 02 – Cytometry in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -179,7 +179,7 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">homework week 01</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">homework week 02</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -298,7 +298,8 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem-1" id="toc-problem-1" class="nav-link active" data-scroll-target="#problem-1">Problem 1</a>
+  <li><a href="#coding-style" id="toc-coding-style" class="nav-link active" data-scroll-target="#coding-style">Coding style</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a>
   <ul class="collapse">
   <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
   </ul></li>
@@ -309,7 +310,6 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
   <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a>
   <ul class="collapse">
   <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2">Solution</a></li>
-  <li><a href="#conclusion-of-problem-3" id="toc-conclusion-of-problem-3" class="nav-link" data-scroll-target="#conclusion-of-problem-3">Conclusion of problem 3</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -319,7 +319,7 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">homework week 01</h1>
+<h1 class="title">homework week 02</h1>
 </div>
 
 
@@ -336,7 +336,7 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 8, 2026</p>
+      <p class="date">February 16, 2026</p>
     </div>
   </div>
   
@@ -348,79 +348,121 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
 </header>
 
 
+<section id="coding-style" class="level1">
+<h1>Coding style</h1>
+<p>I prefer the following conventions when writing code:</p>
+<ul>
+<li><p>variable naming system: snake_case</p></li>
+<li><p>symbol for variable attribution: “=”</p></li>
+</ul>
+</section>
 <section id="problem-1" class="level1">
 <h1>Problem 1</h1>
-<p>“We installed PeacoQC during this session, but we didn’t have time to explore what functions are present within the package. Using what you have learned about accessing documentation, figure out and list what functions it contains”</p>
+<p>“Plug in an external hard-drive or USB into your computer. Manually, create a folder within called “TargetFolder”. Try to programmatically specify the file path to identify the folders and files present on your external drive. Then, try to copy your .fcs files from their current folder on your desktop to the TargetFolder on your drive using R. Remember, just copy, no deletion, you need to walk before you can run :D”</p>
 <section id="solution" class="level3">
 <h3 class="anchored" data-anchor-id="solution">Solution</h3>
+<ol type="1">
+<li><p>I will open my working directory where I have the folder data using getwd()</p></li>
+<li><p>I will list the files inside the data folder and attribute them to a variable files_to_copy by using list.files() function. I will use full.names = TRUE so that I already have the full path from them. I will also have to filter using pattern = “.fcs” so that the list contains only the fcs files.</p></li>
+<li><p>checking what directories and files are inside the external hard drive. I am hardcoding it, but is there a way to open another directory in R?</p></li>
+<li><p>I will assign the created folder path to a new variable using file.path() function</p></li>
+<li><p>If folder exists (TRUE) then copy the files inside files_to_copy using file.copy() function. This is not entirely necessary as I created the folder manually and know it’s there. Just using it for training purposes. I can see using this to create a new folder plus copy files in the same code chunk (then I would have to set it as if NOT exists -&gt; dir.create + file.copy)</p></li>
+<li><p>Checking the files were copied by list.files, this time without full names.</p></li>
+</ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I activate the library with the following: </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PeacoQC)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#set working directory</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#The following line calls a package help page on the side bar</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>?PeacoQC </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Alternatively,one can use the following line of code to list all the functions inside PeacoQ:</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(<span class="st">"package:PeacoQC"</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#create list of files to copy and verifying the variable contains the full names of said files</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>files_to_copy <span class="ot">=</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">"data"</span>, <span class="at">pattern=</span><span class="st">".fcs"</span>, <span class="at">full.names=</span><span class="cn">TRUE</span>, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>files_to_copy </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#checking directories inside the external drive path</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(<span class="at">path=</span><span class="st">"F:/"</span>, <span class="at">full.names=</span><span class="cn">FALSE</span>, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">#attributing the new folder path to a variable</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>new_folder_path <span class="ot">=</span> <span class="fu">file.path</span>(<span class="st">"F:/"</span>, <span class="st">"Target_folder"</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">#copy files inside the files_to_copy to the new folder:</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">dir.exists</span>(new_folder_path)){</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">file.copy</span>(<span class="at">from=</span>files_to_copy, <span class="at">to=</span>new_folder_path)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#check the files were copied:</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path=</span><span class="st">"F:/Target_folder"</span>, <span class="at">full.name=</span><span class="cn">FALSE</span>, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>These are the functions PeacoQC imports when downloading the package Screenshot of the help page:</p>
-<p><img src="../../../..\course/01_InstallingRPackages/homeworks/alexandragabrielaferreira/images/PeacoQC functions.PNG" class="img-fluid"></p>
-<p>Screenshot of the ls function output: <img src="../../../..\course/01_InstallingRPackages/homeworks/alexandragabrielaferreira/images/lsFunctionOutput.PNG" class="img-fluid"></p>
+<p>Confirmation of the copied files!</p>
+<p><img src="../../../..\course/02_FilePaths/homeworks/alexandragabrielaferreira/images/Copied_files_to_external_drive.PNG" class="img-fluid"></p>
 </section>
 </section>
 <section id="problem-2" class="level1">
 <h1>Problem 2</h1>
-<p>“Take a closer look at the list of Bioconductor cytometry packages. Report back on how many there are currently in Bioconductor, the author/maintainer with the most contributed cytometry R packages, and a couple packages that you would be interested in exploring more in-depth later in the course.”</p>
+<p>In this session, we used list.files() with the “full.names argument” set to TRUE, as well as the basename() function to identify specific files. But what if you wanted a particular directory. Run list.files() with “full.names argument” and “recursive” argument set to TRUE, and then search online to find an R function that would retrieve the “” individual directory folders.</p>
 <section id="solution-1" class="level3">
 <h3 class="anchored" data-anchor-id="solution-1">Solution</h3>
-<p>There seems to be 69 packages on bioconductor related to flowcytometry. Mike Jiang is the author/maintainer of 10, 3 of which in collaboration with Greg Finak. Observation: I looked at this info manually by going to the website and using the filters. However there seems to be an automated way of doing this but I didn’t try it.</p>
+<ol type="1">
+<li><p>Attribute the files with their full name path to a variable. Check variable includes the files in the correct format. <img src="../../../..\course/02_FilePaths/homeworks/alexandragabrielaferreira/images/files_in_wd.PNG" class="img-fluid"></p></li>
+<li><p>The function basename() shows the name of the files without the directory</p></li>
+<li><p>The function that retrieves the path of a file from a full.name is <strong>dirname()</strong> <img src="../../../..\course/02_FilePaths/homeworks/alexandragabrielaferreira/images/dirname_output.PNG" class="img-fluid"></p></li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#I'm looking at which working directory I'm in the beginning as a training exercise</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#list of files in working directory with full path names, plus all the files inside working directory will be included</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>files_in_wd <span class="ot">=</span> <span class="fu">list.files</span>(<span class="at">full.names=</span><span class="cn">TRUE</span>, <span class="at">recursive=</span><span class="cn">TRUE</span>) <span class="co">#omitting the path argument defaults to working directory, the same as if using path="."</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>files_in_wd</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#example of using basename for files_in_wd, only outputing the file names without directories.</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">basename</span>(files_in_wd)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#using dirname for files_in_wd to show their respective directory name</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dirname</span>(files_in_wd)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 </section>
 <section id="problem-3" class="level1">
 <h1>Problem 3</h1>
-<p>“There is another way to install R packages, using the newer pak package. Positron uses this when installing suggested dependencies.</p>
-<p>After learning more about it via the documentation and it’s pkgdown website, I would like you to attempt to install the following three R packages using this newer method: “broom”, “cytoMEM”, “DillonHammill/CytoExploreR”.</p>
-<p>Take screenshots, and in a new quarto markdown document, describe how the installation process differed from what you saw for install.packages(), install() and install_github().”</p>
+<p>“R packages often come with internal datasets, that are typically used for use in the help documentation examples. These can be accessed through the use of the system.file() function. See an example below.</p>
+<p>system.file(“extdata”, package = “FlowSOM”)</p>
+<p>Using what we have learned about file.path navigation, search your way down the file.directory of the FlowSOM and flowWorkspace packages, and identify any .fcs files that are present for use in the documentation.”</p>
 <section id="solution-2" class="level3">
 <h3 class="anchored" data-anchor-id="solution-2">Solution</h3>
+<ol type="1">
+<li><p>Activate the libraries first</p></li>
+<li><p>system.file() function retrieves the directory where extdata (externaldata?) is set? let’s test the theory: <img src="../../../..\course/02_FilePaths/homeworks/alexandragabrielaferreira/images/systemfile_function_example.PNG" class="img-fluid"></p></li>
+<li><p>Previous point is correct. Attribute this directory path to a variable.</p></li>
+<li><p>List directories and files inside this path. list.dirs outputs 0, I’m assuming there are no folders inside.</p></li>
+<li><p>list.files finds the files inside the flow_som_path and I can see there is an .fcs file in there, together with a .wsp file, a .csv and .xml files too. <img src="../../../..\course/02_FilePaths/homeworks/alexandragabrielaferreira/images/test_files_flowSOM.PNG" class="img-fluid"></p></li>
+<li><p>Repeat the same thing with flowWorkspace</p>
+<ul>
+<li>issue 1. when I run list.files() for flowWorkspace with recursive FALSE there is only one xml file in there. <img src="../../../..\course/02_FilePaths/homeworks/alexandragabrielaferreira/images/flowWORK_listfiles_recursive_FALSE.PNG" class="img-fluid" alt="issue 1 print"></li>
+</ul></li>
+</ol>
+<p>Small observation: as I found it weird it only had a xml file inside, I tried to run ?flowWorkspace in case they had something there regarding external data. The help page is not very helpful for this library and the reference link connects to a for-sale domain (“http://www.rglab.org/”).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>?pak <span class="co">#this outputs a "no documentation for pak in specified packages and libraries"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install pak from CRAN</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pak"</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#after successful package installation, activate library:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pak)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#search for info on pak</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>?pak</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#activate the library flowSOM and flowWorkspace</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FlowSOM)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flowWorkspace)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#example of using system.file() function:</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>flow_som_path<span class="ot">=</span><span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="at">package =</span> <span class="st">"FlowSOM"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>flow_som_path</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#list directories inside flow_som_path:</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>dir_inside_flow_som <span class="ot">=</span> <span class="fu">list.dirs</span>(flow_som_path, <span class="at">full.names=</span><span class="cn">FALSE</span>, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>dir_inside_flow_som <span class="co">#output is 0, which means probably there are no folders inside</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#list files inside flow_som_path</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(flow_som_path, <span class="at">full.names=</span><span class="cn">FALSE</span>, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Repeat for workspace:</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>flowWORK_path<span class="ot">=</span><span class="fu">system.file</span>(<span class="st">"extdata"</span>, <span class="at">package =</span> <span class="st">"flowWorkspace"</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>flowWORK_path</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(flowWORK_path)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(flowWORK_path, <span class="at">full.names=</span><span class="cn">FALSE</span>, <span class="at">recursive=</span><span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>screenshot of pak info page:</p>
-<p><img src="../../../..\course/01_InstallingRPackages/homeworks/alexandragabrielaferreira/images/HowToUsePak.PNG" class="img-fluid"></p>
-<p>Installing packages from CRAN, Bioconductor and github using pak</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#installing a CRAN package:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(<span class="st">"broom"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#installing a bioconductor package:</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(<span class="st">"cytoMEM"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(<span class="st">"DillonHammill/CytoExploreR"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(<span class="st">"EmbedSOM"</span>) <span class="co">#EmbedSOM was was removed from CRAN repo</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(<span class="st">"superheat"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Screenshot of installing broom from CRAN:</p>
-<p><img src="../../../..\course/01_InstallingRPackages/homeworks/alexandragabrielaferreira/images/installbroom.PNG" class="img-fluid"></p>
-<p>Screenshot of installing cytoMEM from bioconductor:</p>
-<p><img src="../../../..\course/01_InstallingRPackages/homeworks/alexandragabrielaferreira/images/installCytoMEM.PNG" class="img-fluid"></p>
-<p>Screenshot of failed installation of cytoExploreR from github:</p>
-<p><img src="../../../..\course/01_InstallingRPackages/homeworks/alexandragabrielaferreira/images/ERROR_InstallCytoExploreR.PNG" class="img-fluid"></p>
-<p>Screenshot of EmbedSOM removal from CRAN:</p>
-<p><img src="../../../..\course/01_InstallingRPackages/homeworks/alexandragabrielaferreira/images/embedSOMremovedfromCRAN.PNG" class="img-fluid"></p>
-<p>Screenshot of installing superheat from CRAN:</p>
-<p><img src="../../../..\course/01_InstallingRPackages/homeworks/alexandragabrielaferreira/images/installSuperHeat.PNG" class="img-fluid"></p>
-</section>
-<section id="conclusion-of-problem-3" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion-of-problem-3">Conclusion of problem 3</h3>
-<p>In this last problem it seems like: pak function allows one to use one single line of code to install packages from CRAN, Bioconductor, github and URL pak also shows the process of installing the package requested and checks for other packages necessary pak installs the other packages as well In the end, pak shows which packages were installed, their versions and size</p>
 
 
 </section>
