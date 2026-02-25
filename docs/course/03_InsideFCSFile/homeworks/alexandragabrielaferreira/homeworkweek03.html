@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="David Rach">
-<meta name="dcterms.date" content="2026-01-21">
+<meta name="author" content="Alexandra Gabriela Ferreira">
+<meta name="dcterms.date" content="2027-11-02">
 
-<title>Installing Software on Linux – Cytometry in R</title>
+<title>homework week 03 – Cytometry in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,23 +60,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-8eaec6b9941db0f18eecf13b95a46332.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap-ec4236e849263924bc4118252a4b1e74.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,10 +126,11 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../images/hex.svg" alt="" class="navbar-logo">
+    <a href="../../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../../images/hex.svg" alt="" class="navbar-logo light-content">
+    <img src="../../../../images/hex.svg" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Cytometry in R</span>
     </a>
   </div>
@@ -139,15 +141,15 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="../../../../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Schedule.html"> 
+    <a class="nav-link" href="../../../../Schedule.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../course/index.html"> 
+    <a class="nav-link" href="../../../../course/index.html"> 
 <span class="menu-text">Course</span></a>
   </li>  
 </ul>
@@ -177,7 +179,7 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Installing Software on Linux</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">homework week 03</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -203,43 +205,43 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/00_GitHub/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/00_GitHub/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - GitHub</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/00_WorkstationSetup/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/00_WorkstationSetup/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - Workstation Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/00_Positron/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/00_Positron/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - Positron</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/00_Git/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/00_Git/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - Git</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/00_Quarto/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/00_Quarto/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - Quarto</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/00_Homeworks/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/00_Homeworks/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - Getting Help</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/00_Floreada/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/00_Floreada/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">00 - Floreada</span></a>
   </div>
 </li>
@@ -247,7 +249,7 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../course/01_InstallingRPackages/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../../course/01_InstallingRPackages/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to R</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -256,25 +258,25 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/01_InstallingRPackages/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/01_InstallingRPackages/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01 - Installing R Packages</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/02_FilePaths/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/02_FilePaths/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">02 - File Paths</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/03_InsideFCSFile/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/03_InsideFCSFile/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03 - Inside a .FCS file</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../course/04_IntroToTidyverse/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../course/04_IntroToTidyverse/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">04 - Intro to Tidyverse</span></a>
   </div>
 </li>
@@ -302,20 +304,22 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting Started</a>
+  <li><a href="#before-starting" id="toc-before-starting" class="nav-link active" data-scroll-target="#before-starting">Before starting</a></li>
+  <li><a href="#problem-1" id="toc-problem-1" class="nav-link" data-scroll-target="#problem-1">Problem 1</a>
   <ul>
-  <li><a href="#debian-based-distros" id="toc-debian-based-distros" class="nav-link" data-scroll-target="#debian-based-distros">Debian-based Distros</a>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a>
   <ul class="collapse">
-  <li><a href="#installing-r" id="toc-installing-r" class="nav-link" data-scroll-target="#installing-r">Installing R</a></li>
+  <li><a href="#exprs-comparison" id="toc-exprs-comparison" class="nav-link" data-scroll-target="#exprs-comparison">exprs comparison</a></li>
   </ul></li>
-  <li><a href="#installing-git" id="toc-installing-git" class="nav-link" data-scroll-target="#installing-git">Installing Git</a></li>
-  <li><a href="#installing-positron" id="toc-installing-positron" class="nav-link" data-scroll-target="#installing-positron">Installing Positron</a></li>
   </ul></li>
-  <li><a href="#connecting-github-and-positron" id="toc-connecting-github-and-positron" class="nav-link" data-scroll-target="#connecting-github-and-positron">Connecting GitHub and Positron</a></li>
-  <li><a href="#new-folder-from-git" id="toc-new-folder-from-git" class="nav-link" data-scroll-target="#new-folder-from-git">New Folder from Git</a></li>
-  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap-up</a></li>
-  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
+  <li><a href="#problem-2" id="toc-problem-2" class="nav-link" data-scroll-target="#problem-2">Problem 2</a>
+  <ul>
+  <li><a href="#solution-1" id="toc-solution-1" class="nav-link" data-scroll-target="#solution-1">Solution</a></li>
+  </ul></li>
+  <li><a href="#problem-3" id="toc-problem-3" class="nav-link" data-scroll-target="#problem-3">Problem 3</a>
+  <ul>
+  <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2">Solution</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -324,7 +328,7 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Installing Software on Linux</h1>
+<h1 class="title">homework week 03</h1>
 </div>
 
 
@@ -334,14 +338,14 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>David Rach </p>
+             <p>Alexandra Gabriela Ferreira </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 21, 2026</p>
+      <p class="date">November 2, 2027</p>
     </div>
   </div>
   
@@ -353,231 +357,145 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
 </header>
 
 
-<p><img src="../../images/WebsiteBanner.png" class="img-fluid"></p>
-<div style="text-align: right;">
-<p><a href="https://www.gnu.org/licenses/agpl-3.0.en.html"><img src="https://img.shields.io/badge/license-AGPLv3-blue.png" class="img-fluid" alt="AGPL-3.0"></a> <a href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg" class="img-fluid" alt="CC BY-SA 4.0"></a></p>
-</div>
-<p>For the YouTube livestream recording, see <a href="https://www.youtube.com/live/xZtvnQ6OsWM?si=1Vo-ajnf33HHHePJ">here</a></p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xZtvnQ6OsWM?si=1Vo-ajnf33HHHePJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="">
-</iframe>
-<p>For screen-shot slides, click <a href="../../course/00_WorkstationSetup/LinuxSlides.html">here</a></p>
-<p>This is the software installation walkthrough for those whose computers are running Linux. First off, welcome! Based on our pre-course interest form, there was a suprising number of you daily-drivers out there! However, a CytometryInR interest form is unlikely to be representative of the general population, so please stash all Year of the Linux desktop banners until further notice.</p>
-<p><img src="../../course/00_WorkstationSetup/images/ComputerOS.png" class="img-fluid" style="width:100.0%"></p>
-<p><br></p>
-<hr>
-<section id="background" class="level1">
-<h1>Background</h1>
-<p>If you are daily-driving Linux, you are likely not a stranger to the process of getting software installed on your particular distribution.</p>
-<p>When it comes to installing <a href="https://www.r-project.org/">R website</a>, the R project supports packaging formats for both Debian (including Ubuntu, Linux Mint, etc) and RHEL (including Fedora) based-distributions. The supported branch for SUSE has not been active since 2012. This is similarly the case when installing <a href="https://positron.posit.co/">Positron</a>. Depending on your distribution, you might also need to install <a href="https://git-scm.com/">Git</a> via your package manager.</p>
-<p>I daily-drive Debian stable (Trixie), so this walk-through documents the installation process for the Debian branch. I plan to circle back with a Fedora version, but if that doesn’t occur by the publishing time, I refer you to the R for Linux <a href="https://cran.r-project.org/bin/linux/fedora/#fedora">documentation</a> to help get you started.</p>
-<p><br></p>
-<hr>
+<section id="before-starting" class="level1">
+<h1>Before starting</h1>
+<p>snake_case for variables “=” as my variable attribution symbol</p>
 </section>
-<section id="getting-started" class="level1">
-<h1>Getting Started</h1>
-<section id="debian-based-distros" class="level2">
-<h2 class="anchored" data-anchor-id="debian-based-distros">Debian-based Distros</h2>
-<section id="installing-r" class="level3">
-<h3 class="anchored" data-anchor-id="installing-r">Installing R</h3>
-<p>To get started, first navigate to the <a href="https://www.r-project.org/">R website</a>. Once there, click on <a href="https://cran.r-project.org/mirrors.html">Download R</a> option towards the top of the page.</p>
-<p><img src="images/Linux/01_RLanding.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>On the next screen, you will need to select a mirror from which to download the software from. You can either select the closest geographic location (which may be faster) or alternatively just select the <a href="https://cloud.r-project.org/">Cloud</a> option which should redirect you.</p>
-<p><img src="images/Linux/02_Mirror.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Once this is done, select your Linux Distro (or one that shares your package managers format).</p>
-<p><img src="images/Linux/03_Debian.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>On the landing page, you will find a bunch of relevant installation information, which is worthwhile giving a read-through when you have time.</p>
-<p><img src="images/Linux/04_Landing.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>The process to successfully install R can be summarized as follows:</p>
-<p>Update apt/sources.list to include the CRAN repository (allowing access to R packages)</p>
-<p><img src="images/Linux/08_AptSources.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Since we are running on Debian stable (Trixie), we would add the following line to sources.list</p>
-<p><img src="images/Linux/07_TrixieRepo.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>So in practice, open sources.list:</p>
-<p><img src="images/Linux/09_EditAptSources.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Paste the line, and “Ctrl + O”; “Enter”; “Ctrl + X” to save the changes.</p>
-<p><img src="images/Linux/10_UpdatedEditAptSources.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Next, we will need to retrieve the keyID used to sign. This can be fetched from Ubuntu via the terminal.</p>
-<p><img src="images/Linux/06_SecureAptKey.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p><img src="images/Linux/12_AptKey.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Then we need to export and write it</p>
-<p><img src="images/Linux/12_AptKey2.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Which if successful, will display the public key.</p>
-<p><img src="images/Linux/12_PublicKey.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>With the above set up, we can proceed via our apt package manager to install both r-base and r-base-dev (which contains the equivalent of Rtools for Windows, or Xcode Command Line Tools for macOS).</p>
-<p><img src="images/Linux/05_BaseR.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p><img src="images/Linux/13_InstallBaseAndDev.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p><img src="images/Linux/13_Install.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>And if all goes well, R should now be installed.</p>
-</section>
-</section>
-<section id="installing-git" class="level2">
-<h2 class="anchored" data-anchor-id="installing-git">Installing Git</h2>
+<section id="problem-1" class="level1">
+<h1>Problem 1</h1>
+<p>“Today’s walkthrough focused on a raw spectral flow cytometry file. Within a subfolder in data you will also find an unmixed .fcs file (2025_07_26…). Using what learned to day, investigate it, and see if you can catalog the main differences that occured to the keyword, parameters and exprs. Did any keywords get added, changed, deleted entirely? etc.”</p>
+<section id="solution" class="level3">
+<h3 class="anchored" data-anchor-id="solution">Solution</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sudo apt install git</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#activate the library to be used when starting a session:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flowCore)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#get the working directory </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#get the folder path where to find the files</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(<span class="at">path=</span><span class="st">"data"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>folder_w_files <span class="ot">=</span> <span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"AdditionalFCSFiles"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>folder_w_files</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">#read the full path to the file "2025_07_26..." by using list.files() with full names enabled and pattern ="..."</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>unmixed_file <span class="ot">=</span> <span class="fu">list.files</span>(folder_w_files, <span class="at">pattern =</span> <span class="st">"2025_07_26"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>unmixed_file</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Read the file using read.FCS from flowCore:</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>read_file <span class="ot">=</span> <span class="fu">read.FCS</span>(<span class="at">filename=</span>unmixed_file, <span class="at">transformation =</span> <span class="cn">FALSE</span>, <span class="at">truncate_max_range =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>read_file</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#access exprs matrix-like object:</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>unmixed_exprs <span class="ot">=</span> read_file<span class="sc">@</span>exprs</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>unmixed_exprs</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(unmixed_exprs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="installing-positron" class="level2">
-<h2 class="anchored" data-anchor-id="installing-positron">Installing Positron</h2>
-<p>Finally, you will need to install <a href="https://positron.posit.co/">Positron</a>. It will be the integrated development environment (IDE) we will be using for the course.</p>
-<p>First, navigate to their <a href="https://positron.posit.co/">homepage</a>, and select the blue Download option button on the upper-right.</p>
-<p><img src="images/Windows/25_Positron.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>You will then need to accept the Elastic License agreement to use the software (we will cover this source-available license type and what it does later in the course).</p>
-<p><img src="images/Linux/15_TermsService.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>With the license accepted, you will be able to select distribution and architecture.</p>
-<p><img src="images/Linux/16_LinuxFlavor.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Once the Download completes, proceed to install the .deb package as you would nornally. GUI example via Discover below.</p>
-<p><img src="images/Linux/17_DebPackageInstall.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Depending on your configurations, you may be asked to exert your sudo powers.</p>
-<p><img src="images/Linux/18_Password.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Once this completes, you should now be able to launch the software for the first time.</p>
-<p><img src="images/Linux/19_InstallSuccess.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-</section>
-</section>
-<section id="connecting-github-and-positron" class="level1">
-<h1>Connecting GitHub and Positron</h1>
-<p>Now that you have all the software installed, we need to make sure that everything is communicating properly with each other. To do this, we will start by making sure your GitHub account and Positron are connected.</p>
-<p>When opening Positron for the first time, you will encounter the following view:</p>
-<p><img src="images/Linux/20_PositronStart.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>We will go over the various aspects of using Positron in the next <a href="../../course/00_Positron/index.html">section</a>. For now select the “Start Session” button on the upper right.</p>
-<p><img src="images/Linux/20_PositronStart.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Then select the most recent/up-to-date R version.</p>
-<p><img src="images/Linux/21_R.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>R will proceed to activate, and you will see a message appear in the bottom center window (ie. console)</p>
-<p><img src="images/Linux/22_RSuccess.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Congratulations, we now know R is working correctly. Next up, connecting your GitHub account to Positron. To make this process easier, first log into your <a href="https://github.com/">GitHub</a> account from your preferred web browser.</p>
-<p>Once this is done, return to Positron, and click on the profile Icon and select “Sign with GitHub” option.</p>
-<p><img src="images/Linux/23_GitHub.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Positron will provide a popup containing a code you will need to give to GitHub to set up authentication. Proceed to click on the “Copy &amp; Continue to GitHub” button.</p>
-<p><img src="images/Linux/24_Code.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>If you are already signed in, it will ask which account you want to connect Positron with. Select your GitHub account.</p>
-<p><img src="images/Linux/25_GitHubAccount.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>You will then be prompted to paste the one-time code provided by Positron. Once pasted, click on Continue.</p>
-<p><img src="images/Linux/26_EnterNumber.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>And select “Authorize posit-dev” to authorize Positron to interact with your GitHub Account.</p>
-<p><img src="images/Linux/27_Confirm.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>And if all works out, you should see the following succes page</p>
-<p><img src="images/Linux/28_ConfirmationPage.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Returning to Positron, check the profile tab on the lower left and verify that it now shows your GitHub account. If it does, congrats! If not, close Positron, check the tab again, and repeat the above one-time code steps if needed.</p>
-<p><img src="images/Linux/29_PositronSuccess.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-</section>
-<section id="new-folder-from-git" class="level1">
-<h1>New Folder from Git</h1>
-<p>With <a href="https://github.com/">GitHub</a> and Positron now connected, we will bring your two repositories (the README and the fork of CytometryInR) from GitHub to your local computer.</p>
-<p>To this, first navigate to the Folder icon on the upper-right, and select the “New Folder from Git” option</p>
-<p><img src="images/MacOS/24.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>Lets first bring in your forked version of the Cytometry in R repository. Depending on your GitHub username, you would either need to copy the URL from your browser, or swap in your username in place of UMGCCCFCSR in “https://github.com/UMGCCCFCSR/CytometryInR”</p>
-<p><img src="images/FolderFromGit1.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>You will also be asked for a location to store your project folder. It is best to save the folder locally (avoid using OneDrive or other cloud locations for now), as it makes things easier to save or modify without running into permission issues. For most of our course examples, we will be saving our Project Folders under the Documents Folder.</p>
-<p><img src="images/Import2.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>You may encounter a pop-up asking whether you trust the authors for that particular folder. For your own projects, you are the author, so go ahead and select Yes. Selecting No is a good precaution when bringing in a random GitHub project that you haven’t had time to properly vet.</p>
-<p><img src="images/MacOS/28.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>And with that done, you should now see the forked Cytometry in R course contents appear within Positron.</p>
-<p><img src="images/Import2Done.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>We will now repeat the process to bring in youir GitHub profile’s ReadMe repository. Depending on your GitHub username, you would either need to copy the URL from your browser, or swap in your username twice in place for each UMGCCCFCSR: “https://github.com/UMGCCCFCSR/UMGCCCFCSR”</p>
-<p><img src="images/FolderFromGit2.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>After pasting the URL, and selecting the folder to save your project folder to (Documents in our case), select OK.</p>
-<p><img src="images/Import2.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-<p>And after a quick import you should now see your ReadMe repository files available and ready to be modified on your local computer.</p>
-<p><img src="images/Import2Done.png" class="img-fluid"></p>
-<p><br></p>
-<hr>
-</section>
-<section id="wrap-up" class="level1">
-<h1>Wrap-up</h1>
-<p>In this walkthrough, we installed R, Rtools, Git and Positron. We also made sure to connect Positron and your GitHub account, and brought copies of your repositories into local project folders. With this, you now have on your workstation the major pieces of software needed for the course.</p>
-<p>In the <a href="../../course/00_Positron/">next section</a>, we will delve into how to use Positron, and explore more how to use the connection you set up with GitHub to send <a href="../../course/00_Git/">changes</a> from your local repositories back to GitHub.</p>
-<p><br></p>
-<hr>
-</section>
-<section id="additional-resources" class="level1">
-<h1>Additional Resources</h1>
-<p><a href="https://youtu.be/lC4d4EpMMxg?si=9TeFkwFzrRbzA-Ma">How to Download and Install Software on Linux</a></p>
-<p><a href="https://youtu.be/D6CunpqF04E?si=jeU6-XiSRj-ygDf_">Riffomonas Project: Installing R, RStudio, and packages for Windows and Mac OS X (CC077)</a></p>
-<p><a href="https://posit.co/blog/a-quick-tour-of-positron/">A brief tour of Positron</a></p>
-<p><a href="https://youtu.be/r8jQ9hVA2qs?si=jNastI7kNiGHHG9O">A brief introduction to Git for beginners</a></p>
-<div style="text-align: right;">
-<p><a href="https://www.gnu.org/licenses/agpl-3.0.en.html"><img src="https://www.gnu.org/graphics/agplv3-with-text-162x68.png" class="img-fluid" alt="AGPL-3.0"></a> <a href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/88x31.png" class="img-fluid" alt="CC BY-SA 4.0"></a></p>
+<section id="exprs-comparison" class="level4">
+<h4 class="anchored" data-anchor-id="exprs-comparison">exprs comparison</h4>
+<p><img src="../../../..\course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/exprs_comparison_str.PNG" class="img-fluid"></p>
+<p>By the image above we can already say that the fcs file “2025_07_26_AB_02_NY068_02_Ctrl.fcs” has 100 rows (which correspond to 100 events) and 43 columns corresponding to the different detectors.</p>
+<p><img src="../../../..\course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/data_frame_info.PNG" class="img-fluid"></p>
+<p>When looking at the info when I called the variable with the entire data frame, it says there are 472 keywords in the description slot. The file we used for the class had 476 keywords, so the unmixing process can remove keywords maybe…</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#checking what is inside the data object inside parameters object inside read_file object</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>unmixed_parameters_data <span class="ot">=</span> read_file<span class="sc">@</span>parameters<span class="sc">@</span>data</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>unmixed_parameters_data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p><img src="../../../..\course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/parameters_data_info.PNG" class="img-fluid"></p>
+<p>The data inside parameters seems to have now only 43 detectors, all of them with the name of the fluorochrome used for each detector. In the column “desc”, there seems to now appear the ligand/marker associated with each of the fluorochromes instead of NA values.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>unmixed_description_list <span class="ot">=</span> read_file<span class="sc">@</span>description</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>unmixed_description_list</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>unmixed_subset_description <span class="ot">=</span> unmixed_description_list[<span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>]</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>unmixed_subset_description</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>unmixed_detectors <span class="ot">=</span> unmixed_description_list[<span class="dv">20</span><span class="sc">:</span><span class="dv">384</span>]</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>unmixed_detectors</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="../../../..\course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/detector_keywords.PNG" class="img-fluid"></p>
+<p>The detector related keywords change, $TYPE for fluorochrome detector is now unmixed_fluorescence instead of raw_fluorescence.</p>
+<p>And these are just a few diferences I noticed.</p>
+</section>
+</section>
+</section>
+<section id="problem-2" class="level1">
+<h1>Problem 2</h1>
+<p>“Today’s files were for spectral .fcs files from a Cytek Aurora within a subfolder in data you will also find a conventional flow cytometry file (2025-10_22…). Similarly, explore and see if you find any major differences (beyond the different detector or fluorophore names which will vary based on antibody panel used, etc)”</p>
+<section id="solution-1" class="level3">
+<h3 class="anchored" data-anchor-id="solution-1">Solution</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#activate library if not activated before</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flowCore)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#get the working directory </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#get the folder path where to find the files</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">list.dirs</span>(<span class="at">path=</span><span class="st">"data"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>folder_w_files <span class="ot">=</span> <span class="fu">file.path</span>(<span class="st">"data"</span>, <span class="st">"AdditionalFCSFiles"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>folder_w_files</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#read the full path to the file "2025_07_26..." by using list.files() with full names enabled and pattern ="..."</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>conventional_file <span class="ot">=</span> <span class="fu">list.files</span>(folder_w_files, <span class="at">pattern =</span> <span class="st">"2025-10_22"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>conventional_file</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#Read the file using read.FCS from flowCore:</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>read_conventional_file <span class="ot">=</span> <span class="fu">read.FCS</span>(<span class="at">filename=</span>conventional_file, <span class="at">transformation =</span> <span class="cn">FALSE</span>, <span class="at">truncate_max_range =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>read_conventional_file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="../../../..\course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/conventional_file_read_by_read_FCS.PNG" class="img-fluid"> <img src="../../../..\course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/read_conventional_file_in_console.PNG" class="img-fluid"></p>
+<p>Similarities: “read.FCS()” created a S4 type of object out of the conventional fcs file. This file has 1852 cells and 33 observables, ie, data for 33 detectors. The dataframe has 330 keywords in the description object.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#access exprs matrix-like object:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>conventional_exprs <span class="ot">=</span> read_conventional_file<span class="sc">@</span>exprs</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>conventional_exprs</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(conventional_exprs)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#checking what is inside the data object inside parameters object inside read_file object</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>conventional_parameters_data <span class="ot">=</span> read_conventional_file<span class="sc">@</span>parameters<span class="sc">@</span>data</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>conventional_parameters_data</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>conventional_description_list <span class="ot">=</span> read_conventional_file<span class="sc">@</span>description</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>conventional_description_list</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>subset_description_list <span class="ot">=</span> conventional_description_list[<span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>]</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>subset_description_list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Exprs, parameters and description seem very similar to the others. I found a SPILL to be used instead of SPILLOVER, which is a difference that comes from being from a different manufacturer/developer, I guess.</p>
+</section>
+</section>
+<section id="problem-3" class="level1">
+<h1>Problem 3</h1>
+<p>“If you have access to commercial software, take one of the .fcs files and try to see if you can see similar internal information from within the software. For those without commercial access, try the equivalent process using Floreada.io.”</p>
+<section id="solution-2" class="level3">
+<h3 class="anchored" data-anchor-id="solution-2">Solution</h3>
+<p>In FlowJo, one can have access to the different keywords and create new ones through the edit column names and through the menu Add keyword.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -632,13 +550,14 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -990,7 +909,7 @@ gtag('config', 'G-LZ35J3XE4D', { 'anonymize_ip': true});
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p><img src="../../images/AGPL3.png" class="img-fluid" alt="AGPL-3.0"> <img src="../../images/CCBYSA.png" class="img-fluid" alt="CC-BY-SA"></p>
+<p><img src="../../../..\images/AGPL3.png" class="img-fluid" alt="AGPL-3.0"> <img src="../../../..\images/CCBYSA.png" class="img-fluid" alt="CC-BY-SA"></p>
 </div>
   </div>
 </footer>
