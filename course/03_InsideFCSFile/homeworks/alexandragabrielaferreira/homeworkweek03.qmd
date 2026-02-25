@@ -1,0 +1,173 @@
+---
+title: "homework week 03"
+author: "Alexandra Gabriela Ferreira"
+date: 23-02-2026
+format: html
+toc: true
+toc-depth: 4
+---
+
+# Before starting
+snake_case for variables
+"=" as my variable attribution symbol
+
+# Problem 1
+
+"Today’s walkthrough focused on a raw spectral flow cytometry file. Within a subfolder in data you will also find an unmixed .fcs file (2025_07_26…). Using what learned to day, investigate it, and see if you can catalog the main differences that occured to the keyword, parameters and exprs. Did any keywords get added, changed, deleted entirely? etc."
+
+### Solution 
+
+```{r}
+#| eval: FALSE
+
+#activate the library to be used when starting a session:
+library(flowCore)
+
+#get the working directory 
+getwd()
+
+#get the folder path where to find the files
+
+list.dirs(path="data", full.names = TRUE, recursive = FALSE)
+
+folder_w_files = file.path("data", "AdditionalFCSFiles")
+
+folder_w_files
+
+#read the full path to the file "2025_07_26..." by using list.files() with full names enabled and pattern ="..."
+
+unmixed_file = list.files(folder_w_files, pattern = "2025_07_26", full.names = TRUE)
+
+unmixed_file
+
+#Read the file using read.FCS from flowCore:
+
+read_file = read.FCS(filename=unmixed_file, transformation = FALSE, truncate_max_range = FALSE)
+read_file
+
+#access exprs matrix-like object:
+
+unmixed_exprs = read_file@exprs
+unmixed_exprs
+
+str(unmixed_exprs)
+```
+
+#### exprs comparison
+![](/course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/exprs_comparison_str.PNG)
+
+By the image above we can already say that the fcs file "2025_07_26_AB_02_NY068_02_Ctrl.fcs" has 100 rows (which correspond to 100 events) and 43 columns corresponding to the different detectors.
+
+![](/course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/data_frame_info.PNG)
+
+When looking at the info when I called the variable with the entire data frame, it says there are 472 keywords in the description slot. The file we used for the class had 476 keywords, so the unmixing process can remove keywords maybe...
+
+```{r}
+#| eval: FALSE
+
+#checking what is inside the data object inside parameters object inside read_file object
+unmixed_parameters_data = read_file@parameters@data
+
+unmixed_parameters_data
+
+```
+
+
+![](/course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/parameters_data_info.PNG)
+
+The data inside parameters seems to have now only 43 detectors, all of them with the name of the fluorochrome used for each detector. In the column "desc", there seems to now appear the ligand/marker associated with each of the fluorochromes instead of NA values. 
+
+```{r}
+#| eval: FALSE
+
+
+unmixed_description_list = read_file@description
+unmixed_description_list
+
+unmixed_subset_description = unmixed_description_list[1:18]
+
+unmixed_subset_description
+
+unmixed_detectors = unmixed_description_list[20:384]
+unmixed_detectors
+```
+![](/course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/detector_keywords.PNG)
+
+The detector related keywords change, $TYPE for fluorochrome detector is now unmixed_fluorescence instead of raw_fluorescence.
+
+And these are just a few diferences I noticed.
+
+
+
+# Problem 2
+"Today’s files were for spectral .fcs files from a Cytek Aurora within a subfolder in data you will also find a conventional flow cytometry file (2025-10_22…). Similarly, explore and see if you find any major differences (beyond the different detector or fluorophore names which will vary based on antibody panel used, etc)"
+
+### Solution
+
+```{r}
+#| eval: FALSE
+
+#activate library if not activated before
+library(flowCore)
+
+#get the working directory 
+getwd()
+
+#get the folder path where to find the files
+
+list.dirs(path="data", full.names = TRUE, recursive = FALSE)
+
+folder_w_files = file.path("data", "AdditionalFCSFiles")
+
+folder_w_files
+
+#read the full path to the file "2025_07_26..." by using list.files() with full names enabled and pattern ="..."
+
+conventional_file = list.files(folder_w_files, pattern = "2025-10_22", full.names = TRUE)
+
+conventional_file
+
+#Read the file using read.FCS from flowCore:
+
+read_conventional_file = read.FCS(filename=conventional_file, transformation = FALSE, truncate_max_range = FALSE)
+read_conventional_file
+```
+![](/course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/conventional_file_read_by_read_FCS.PNG)
+![](/course/03_InsideFCSFile/homeworks/alexandragabrielaferreira/images/read_conventional_file_in_console.PNG)
+
+Similarities: "read.FCS()" created a S4 type of object out of the conventional fcs file. This file has 1852 cells and 33 observables, ie, data for 33 detectors. The dataframe has 330 keywords in the description object.
+
+
+```{r}
+#| eval: FALSE
+#access exprs matrix-like object:
+
+conventional_exprs = read_conventional_file@exprs
+conventional_exprs
+
+str(conventional_exprs)
+
+
+#checking what is inside the data object inside parameters object inside read_file object
+conventional_parameters_data = read_conventional_file@parameters@data
+
+conventional_parameters_data
+
+conventional_description_list = read_conventional_file@description
+conventional_description_list
+
+subset_description_list = conventional_description_list[1:18]
+
+subset_description_list
+```
+
+Exprs, parameters and description seem very similar to the others. I found a SPILL to be used instead of SPILLOVER, which is a difference that comes from being from a different manufacturer/developer, I guess. 
+
+
+
+# Problem 3
+"If you have access to commercial software, take one of the .fcs files and try to see if you can see similar internal information from within the software. For those without commercial access, try the equivalent process using Floreada.io."
+
+### Solution
+
+In FlowJo, one can have access to the different keywords and create new ones through the edit column names and through the menu Add keyword.
