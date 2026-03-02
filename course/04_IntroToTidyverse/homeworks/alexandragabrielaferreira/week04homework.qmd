@@ -1,0 +1,296 @@
+---
+title: "Week 04 homework"
+author: "Alexandra Gabriela Ferreira"
+date: 02-03-2026
+format: html
+toc: true
+toc-depth: 4
+---
+
+# Before starting
+"=" symbol for assigning variable
+
+snake_case for naming all variables, files, etc.
+
+I will use the provided dataset to practice during this homework.
+
+# Problem 1
+
+"Taking a dataset (either todays or one of your own), work through the column-operating functions (select(), rename(), and relocate()). Once this is done, filter() by conditions from two separate columns, arrange in an order that makes sense, and export this “tidy” data as a .csv file."
+
+
+### Solution
+
+```{r}
+#| eval: FALSE
+
+
+# 1. Open the directory I'm working in
+getwd()
+
+#2. Activate the library(ies) I will be using
+
+#library(dplyr)
+
+#3. Establish the path to the folder where the file is: 
+
+folder_path = file.path("data")
+
+folder_path
+
+#4. Get all the files from the folder
+
+list_files = list.files(folder_path)
+
+list_files
+
+#5. Get the file name you want by choosing the correct index:
+
+file_to_open = list_files[2]
+file_to_open
+
+#6. Get the path to the file:
+
+path_to_file = file.path("data", file_to_open)
+path_to_file
+
+# Read the file and import to R
+
+working_dataset = read.csv(file = path_to_file, check.names = FALSE)
+
+# Check the structure and class type of the imported object:
+glimpse(working_dataset)
+class(working_dataset)
+str(working_dataset)
+```
+
+
+The file has 196 rows, 31 columns.
+
+```{r}
+#| eval: FALSE
+
+#check the column names:
+
+column_names = colnames(working_dataset)
+column_names
+```
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem1_check_col_names.PNG)
+
+I see there are some columns with special characters, I will change those using rename:
+
+```{r}
+#| eval: FALSE
+
+# Create a new dataset with renamed columns:
+
+col_renamed_dataset = working_dataset |> rename("Vd2_pos" = "Vd2+", "Vd2_neg" = "Vd2-", "Va7_2pos" = "Va7.2+", "Va7_2neg" = "Va7.2-", "CD4_pos" = "CD4+", "CD4_neg" = "CD4-", "CD8_pos" = "CD8+", "CD8_neg" = "CD8-")
+
+# Check the column names correspond to the ones changed above: 
+
+colnames(col_renamed_dataset)
+
+# noticed I forgot two of the columns, let's renamed those:column_names
+col_renamed_dataset = col_renamed_dataset |> rename("Dump_pos" = "Dump+", "Dump_neg" = "Dump-")
+
+# Confirm again everything is ok:
+
+colnames(col_renamed_dataset)
+
+```
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem1_renaming_colnames.PNG)
+
+
+To answer my scientific hypothesis I want to look at the CD45+ count and frequency of monocytes. I want to calculate the number of monocytes inside CD45+ using this dataset. I am only interested in control samples and SEB treated at a specific timepoint.
+
+```{r}
+#| eval: FALSE
+
+# 1. Let's first see the treatments the samples took
+
+treatments = col_renamed_dataset |> pull(Condition) |> unique()
+treatments
+
+
+# 2. Let's also confirm the timepoints:
+
+timepoints = col_renamed_dataset |> pull(timepoint) |> unique()
+timepoints
+```
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem1_getting_info_treatments_timepoints.PNG)
+
+I confirmed that I have samples treated with SEB and PPD, as well as controls acquired at different time points. 
+
+```{r}
+#| eval: FALSE
+
+# I will first select the columns identifying the samples, timepoint, condition, monocytes proportion and CD45_count, followed by filtering the rows corresponding to SEB and control treated samples, followed by only samples measured at timepoint 9.
+
+new_dataset = col_renamed_dataset |> select("bid", "timepoint", "Condition", "Monocytes", "CD45_count") |> filter(!Condition %in% "PPD", timepoint %in% "9")
+new_dataset
+
+```
+
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/problem1_selecting_col_filter_time_treatments.PNG)
+
+But I realized I prefer the Condition to be before the timepoint and I want to see if there are anomalies based on CD45_count by reorganizing
+
+```{r}
+#| eval: FALSE
+
+new_dataset = new_dataset |> relocate("Condition", .after ="bid") |> arrange(desc(CD45_count))
+head(new_dataset, 5)
+```
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem1_relocate_arrange.PNG)
+
+I can see there are 4 samples whose values are higher than a million cells, I don't think they look right in the fcs files and will remove them as outliers for my new dataset.
+
+
+```{r}
+#| eval: FALSE 
+
+new_dataset = new_dataset |> filter (CD45_count < 10^6)
+head(new_dataset,6)
+
+```
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem1_remove%20outliers.PNG)
+
+
+Let's export this to a new file:
+
+```{r}
+#| eval: FALSE
+
+# create new file name:
+
+new_file_name = paste0("blood_9h_monocytes_data", ".csv")
+new_file_name
+
+# create the file path for the new file:
+
+path_to_folder = file.path("data", new_file_name)
+path_to_folder
+
+# write .csv with the new dataset
+
+write.csv(new_dataset, path_to_folder, row.names = FALSE)
+
+#confirm .csv file was created:
+
+list.files(folder_path)
+```
+
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem1_create_csv_with_new_dataset.PNG)
+
+I confirm the file was created in the path directory I wanted it to. 
+
+
+# Problem 2
+
+"We used the mutate() function to create new columns, but it can also be used to modify existing ones. Various numeric columns are showing way to many significant digits. As was shown, use round() to round all these proportion columns, but use mutate to overwrite the existing column. Export this as it’s own .csv file."
+
+
+### Solution
+
+In this problem I will still work with the renamed columns dataset imported for problem 1.
+
+```{r}
+#| eval: FALSE
+
+head(col_renamed_dataset,5)
+
+rounded_dataset = col_renamed_dataset |> mutate (NotMonocytes = round(NotMonocytes, 5), nonDebris = round(nonDebris, 5), lymphocytes = round (lymphocytes, 5), live = round(live, 5), Dump_pos = round(Dump_pos, 5), Dump_neg = round(Dump_neg, 5), Tcells = round(Tcells, 5), Vd2_pos = round(Vd2_pos, 5), Vd2_neg = round(Vd2_neg, 5), , Va7_2neg = round(Va7_2neg, 5), CD4_pos = round(CD4_pos, 5), CD4_neg = round(CD4_neg, 5), CD8_pos = round(CD8_pos, 5), CD8_neg = round(CD8_neg, 5), Monocytes = round(Monocytes, 5), Debris = round(Debris, 5))
+
+head(rounded_dataset,5)
+
+# create new file name:
+
+rounded_file = paste0("Dataset_rounded", ".csv")
+rounded_file
+
+# create the file path for the new file:
+
+path_to_folder = file.path("data", rounded_file)
+path_to_folder
+
+# write .csv with the new dataset
+
+write.csv(rounded_dataset, path_to_folder, row.names = FALSE)
+
+#confirm .csv file was created:
+
+list.files(folder_path)
+
+```
+
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem2_mutate_round.PNG)
+
+In this figure I can see the first 5 rows of the rounded_dataset showing that all columns with proportions were rounded.
+
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem2_create_new_file.PNG)
+
+I confirmed the creation and existence of the new file in the directory I wanted it to be.
+
+
+# Problem 3
+
+"We can also use mutate() to combine columns. For our dataset, “bid”, “timepoint”, “Condition” are separate columns that originally were all part of the filename for the individual .fcs file. Try to figure out a way to combine them back together using paste0(), and save the new column as “filename”. Once this is done, pull() the contents of this column, and using try to determine whether there were any duplicates (think innovative ways of using !, length() and unique())"
+
+
+### Solution
+
+
+```{r}
+#| eval: False
+
+# get specimen names 1st from bid column
+
+specimen_name= working_dataset |> pull("bid")
+specimen_name
+
+
+# get timepoint portion from timepoint column:
+
+specimen_timepoint = working_dataset |> pull("timepoint")
+specimen_timepoint
+
+
+# get condition from condition column:
+
+specimen_condition = working_dataset |> pull("Condition")
+specimen_condition
+
+
+# Create file names from the previous three variables:
+original_name = paste0(specimen_name, "_", specimen_condition, "_", specimen_timepoint)
+original_name
+
+# Add original file names to the working dataset:
+
+add_filenames = working_dataset |> mutate(Filename = original_name) |> relocate ("Filename", .before = "bid")
+head(add_filenames, 6)
+glimpse(add_filenames)
+
+# check if there are duplicates:
+
+length(unique(original_name)) == length (working_dataset |> pull("bid"))
+
+
+```
+
+I first pulled the info from "bid", "condition" and "timepoints":
+
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem3_get_specimen_condition_timepoint.PNG)
+
+Second, I created the file names using paste0():
+
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem3_create_filenames.PNG)
+
+After, I added the file names as a new column and relocated it to the first column of the dataset:
+
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem3_add_filename_column.PNG)
+
+Finally, by checking if the length of the list with unique original_names is equal to length of the number of rows of any column present in the original data set I can see if there are any duplicate files. If there were any duplicates inside the original dataset, the list of unique original_names would be shorter than the number of rows inside the dataset and the result of the logical question would output FALSE.
+
+![](/course/04_IntroToTidyverse/homeworks/alexandragabrielaferreira/images/Problem3_find_duplicates.PNG)
+
